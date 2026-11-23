@@ -70,7 +70,7 @@ everything else is one click away when you want it.
 | 📬 Catch up | After focus, one notification lists what was silenced (needs focus mode). |
 | 🔇 Mute other audio | Mutes the output that is the default when focus starts, and afterwards unmutes exactly that output (remembered by id and node name) – never another output, even if you switch outputs during focus. If it was already muted, it stays muted. |
 | ☕ Stay awake | No screensaver or lock while focus runs (Wayland idle inhibitor). |
-| 🔊 Sound | A sound when a phase ends. Five freedesktop sounds, click to preview. |
+| 🔊 Sound | A sound when a phase ends. Three short freedesktop sounds (bell, message, ping), click to preview. |
 | ⏸️ Auto breaks | The break starts by itself after the burst. |
 | ▶️ Auto focus | The next session starts by itself after the break. |
 | 🖥️ Fullscreen break | The break covers every screen. **Warning:** you cannot use anything else during the break. Emergency exit: hold Esc for 3 seconds. |

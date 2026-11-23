@@ -47,7 +47,7 @@ var DEFAULTS = {
   autoWork: false,        // Fokus nach Pause automatisch starten
   focusDnd: false,        // während Fokus "Nicht stören" einschalten
   sound: false,           // Signalton am Ende einer Phase
-  soundName: "complete",  // welcher Ton
+  soundName: "bell",      // welcher Ton
   fullscreenBreak: false, // Pause als Vollbild über allen Monitoren
   replayMissed: false,    // stumme Meldungen in der Pause zusammenfassen
   muteAudio: false,       // während Fokus Ton stumm
@@ -171,10 +171,10 @@ function cycleBoxMode(boxes, side) {
 
 var LANGUAGES = ["auto", "de", "en"]
 
-var SOUNDS = ["complete", "bell", "message", "message-new-instant", "alarm-clock-elapsed"]
+var SOUNDS = ["bell", "message", "message-new-instant"]
 
 function soundPath(name) {
-  return "/usr/share/sounds/freedesktop/stereo/" + (SOUNDS.indexOf(name) >= 0 ? name : "complete") + ".oga"
+  return "/usr/share/sounds/freedesktop/stereo/" + (SOUNDS.indexOf(name) >= 0 ? name : "bell") + ".oga"
 }
 
 var LIMITS = {
