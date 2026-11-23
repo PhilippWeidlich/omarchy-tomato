@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "philippweidlich.tomato",
   "name": "Tomato",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Philipp Weidlich",
   "description": "Tomato focus timer: a tomato in your bar with breaks, history calendar, focus mode and drag-and-drop tiles",
   "kinds": [

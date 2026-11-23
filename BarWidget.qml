@@ -501,13 +501,16 @@ BarWidget {
   implicitWidth: Style.bar.statusSlot
   implicitHeight: barSize
 
-  readonly property real iconSize: Style.bar.iconSize * 1.2
+  readonly property real iconSize: Style.bar.iconSize * 1.12
 
   Item {
     id: iconBox
     width: root.iconSize
     height: root.iconSize
     anchors.centerIn: parent
+    // Der Tomatenkörper liegt in der Zeichnung unten (oben nur der Stiel):
+    // ein Stück hoch, damit sie optisch mittig zu den anderen Symbolen sitzt.
+    anchors.verticalCenterOffset: -Math.round(root.iconSize * 0.08)
     scale: mouse.pressed ? 0.9 : 1
     Behavior on scale { NumberAnimation { duration: Style.duration(160); easing.type: Easing.Bezier; easing.bezierCurve: Style.easeOut } }
 
