@@ -68,7 +68,7 @@ everything else is one click away when you want it.
 | 🔔 Notification | Notifies when a phase ends (on by default). |
 | 🔕 Focus mode | Turns on Do Not Disturb during focus. Only if it was off, and only that is undone afterwards. The tomato's own notifications still get through. |
 | 📬 Catch up | After focus, one notification lists what was silenced (needs focus mode). |
-| 🔇 Mute other audio | Mutes the default output during focus, unmutes afterwards. If it was already muted, it stays muted. |
+| 🔇 Mute other audio | Mutes the output that is the default when focus starts, and afterwards unmutes exactly that output (remembered by id and node name) – never another output, even if you switch outputs during focus. If it was already muted, it stays muted. |
 | ☕ Stay awake | No screensaver or lock while focus runs (Wayland idle inhibitor). |
 | 🔊 Sound | A sound when a phase ends. Five freedesktop sounds, click to preview. |
 | ⏸️ Auto breaks | The break starts by itself after the burst. |
@@ -102,7 +102,7 @@ reads, and only for features you switched on:
 | `omarchy-shell notifications isDnd` / `setDnd on\|off` | focus mode |
 | `omarchy-shell -q omarchy.indicators refresh` | after focus mode changes |
 | `pw-play /usr/share/sounds/freedesktop/stereo/<sound>.oga` | sound |
-| `bash -c` with a fixed `wpctl get-volume` / `set-mute` script | mute other audio |
+| `bash -c` with a fixed `wpctl inspect` / `get-volume` / `set-mute` script | mute other audio (only the exact output it muted is unmuted) |
 
 *Catch up* reads `~/.local/state/omarchy/notifications/history.json`
 (read only) to list what was silenced during focus. All text from it is shown

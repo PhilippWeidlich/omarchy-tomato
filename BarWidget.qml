@@ -390,23 +390,44 @@ BarWidget {
     }
   }
 
-  // ---------- Andere Töne stumm (nur was die Tomate selbst stumm geschaltet hat, wird wieder laut) ----------
+  // ---------- Andere Töne stumm ----------
+  // Merkt sich GENAU den Ausgang, den die Tomate stumm geschaltet hat (Nummer + Name),
+  // und schaltet am Ende nur diesen wieder laut – nie einen anderen Ausgang, der
+  // inzwischen Standard geworden ist und absichtlich stumm war.
   readonly property bool muteWanted: ready && settings.muteAudio && isWork && active
   readonly property string muteFlag: stateDir + "/muted-by-tomato"
+
+  readonly property string muteScript: [
+    'f="$1"',
+    'id=$(wpctl inspect @DEFAULT_AUDIO_SINK@ 2>/dev/null | sed -n "1s/^id \\([0-9][0-9]*\\),.*/\\1/p")',
+    '[ -n "$id" ] || exit 0',
+    'name=$(wpctl inspect "$id" 2>/dev/null | sed -n "s/^ *\\*\\{0,1\\} *node\\.name = \\"\\(.*\\)\\"$/\\1/p" | head -n 1)',
+    '[ -n "$name" ] || exit 0',
+    'wpctl get-volume "$id" | grep -q MUTED && exit 0',
+    'wpctl set-mute "$id" 1 && printf "%s\\n%s\\n" "$id" "$name" > "$f"'
+  ].join("\n")
+
+  readonly property string unmuteScript: [
+    'f="$1"',
+    '[ -f "$f" ] || exit 0',
+    'id=$(sed -n 1p "$f" | tr -dc 0-9)',
+    'name=$(sed -n 2p "$f")',
+    'rm -f "$f"',
+    '[ -n "$id" ] && [ -n "$name" ] || exit 0',
+    'now=$(wpctl inspect "$id" 2>/dev/null | sed -n "s/^ *\\*\\{0,1\\} *node\\.name = \\"\\(.*\\)\\"$/\\1/p" | head -n 1)',
+    '[ "$now" = "$name" ] && wpctl set-mute "$id" 0',
+    'exit 0'
+  ].join("\n")
 
   function syncMute() {
     if (!ready || !Model.isLeader(root)) return
     if (muteWanted && st.muteSession !== st.startMs) {
-      Quickshell.execDetached(["bash", "-c",
-        'f="$1"; wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED || { wpctl set-mute @DEFAULT_AUDIO_SINK@ 1 && touch "$f"; }',
-        "mute", muteFlag])
+      Quickshell.execDetached(["bash", "-c", muteScript, "mute", muteFlag])
       var s = Model.copy(st)
       s.muteSession = st.startMs
       writeState(s)
     } else if (!muteWanted) {
-      Quickshell.execDetached(["bash", "-c",
-        'f="$1"; [ -f "$f" ] && { wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; rm -f "$f"; } || true',
-        "unmute", muteFlag])
+      Quickshell.execDetached(["bash", "-c", unmuteScript, "unmute", muteFlag])
     }
   }
 
