@@ -22,22 +22,12 @@ everything else is one click away when you want it.
 
 ## The card
 
-```
-┌────────────────────────────────────────────────────────────┐
-│ ┌────────┐             Focus                  ┌────────┐   │
-│ │ 󰂚  󰂛  │      󰂛 Focus mode   󰅶 Stay awake   │  󰅶     │   │
-│ │        │             24:44                   │        │   │
-│ └────────┘         [▶]  [↺]  [⏭]              └────────┘   │
-│ ━━━━━━━━━━━━●━━━━━━━━━━━━ 🍅 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
-│            Running · done at 17:40  (?)          [✎] [⚙]   │
-│            Today: 3 of 8 sessions · 1 h 15 min              │
-│            ● ● ○ ○  long break after 4 sessions             │
-└────────────────────────────────────────────────────────────┘
-```
+![Left box as a 3×3 grid of tiles, right box showing the timer durations](screenshots/layout-3x3.png)
 
 - **Centre:** phase, the features that are currently on, the big countdown with seconds, and play/pause · reset · skip.
 - **The tomato sits on the progress beam.** When a focus session is done it bursts and tomato chunks, seeds and juice fly across the whole card.
-- **Left and right boxes:** square tiles. A tile is a switch: faded = off, bright = on. Hover a tile and its explanation appears below the time. Nothing is ever cut off, long text wraps.
+- **Left and right boxes:** square tiles in a 2×2 or 3×3 grid – or timer durations, stats or a mini calendar.
+- **Tiles:** each tile is a switch: faded = off, bright = on. Hover a tile and its explanation appears below the time. Nothing is ever cut off, long text wraps.
 - **(?)** explains how the card works.
 - **✎ Customize** · **⚙ History & settings**
 
@@ -45,18 +35,8 @@ everything else is one click away when you want it.
 
 ## ✎ Customize
 
-![Customize](screenshots/customize.png)
+![Customize: 3×3 grid, box content (Tiles / Timer), toolbox and help](screenshots/customize.png)
 
-```
-┌ your card ──────────────────────────────────────────────┐
-│  [tiles 2×2]   … timer …   [tiles 3×3]                   │
-│  [2×2] [󰕰 Tiles]            [3×3] [󱎫 Timer]              │
-├ toolbox ────────────────────────────────────────────────┤
-│  󰋚  󰝟  󰕾  󰏤  󰐊  󰊓      ← drag into a box or click   │
-├─────────────────────────────────────────────────────────┤
-│  Hover a tile to read what it does.                      │
-└─────────────────────────────────────────────────────────┘
-```
 
 - Drag tiles from the toolbox into a box, move them between boxes (they swap), drag them back or press ✕ to remove them.
 - **2×2 / 3×3** changes the grid of a box.
@@ -85,15 +65,15 @@ everything else is one click away when you want it.
 
 | Tile | What it does |
 |---|---|
-| 󰂚 Notification | Notifies when a phase ends (on by default). |
-| 󰂛 Focus mode | Turns on Do Not Disturb during focus. Only if it was off, and only that is undone afterwards. The tomato's own notifications still get through. |
-| 󰋚 Catch up | After focus, one notification lists what was silenced (needs focus mode). |
-| 󰝟 Mute other audio | Mutes the default output during focus, unmutes afterwards. If it was already muted, it stays muted. |
-| 󰅶 Stay awake | No screensaver or lock while focus runs (Wayland idle inhibitor). |
-| 󰕾 Sound | A sound when a phase ends. Five freedesktop sounds, click to preview. |
-| 󰏤 Auto breaks | The break starts by itself after the burst. |
-| 󰐊 Auto focus | The next session starts by itself after the break. |
-| 󰊓 Fullscreen break | The break covers every screen. **Warning:** you cannot use anything else during the break. Emergency exit: hold Esc for 3 seconds. |
+| 🔔 Notification | Notifies when a phase ends (on by default). |
+| 🔕 Focus mode | Turns on Do Not Disturb during focus. Only if it was off, and only that is undone afterwards. The tomato's own notifications still get through. |
+| 📬 Catch up | After focus, one notification lists what was silenced (needs focus mode). |
+| 🔇 Mute other audio | Mutes the default output during focus, unmutes afterwards. If it was already muted, it stays muted. |
+| ☕ Stay awake | No screensaver or lock while focus runs (Wayland idle inhibitor). |
+| 🔊 Sound | A sound when a phase ends. Five freedesktop sounds, click to preview. |
+| ⏸️ Auto breaks | The break starts by itself after the burst. |
+| ▶️ Auto focus | The next session starts by itself after the break. |
+| 🖥️ Fullscreen break | The break covers every screen. **Warning:** you cannot use anything else during the break. Emergency exit: hold Esc for 3 seconds. |
 
 ## Keyboard
 
